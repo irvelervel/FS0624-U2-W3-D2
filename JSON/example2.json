@@ -1,0 +1,44 @@
+[
+    {
+        "firstName": "John",
+        "lastName": "Doe",
+        "age": 25,
+        "drivingLicense": false,
+        "skills": [
+            "HTML",
+            "CSS"
+        ],
+        "location": {
+            "city": "Atlanta",
+            "zipCode": 12345
+        }
+    },
+    {
+        "firstName": "John",
+        "lastName": "Doe",
+        "age": 25,
+        "drivingLicense": false,
+        "skills": [
+            "HTML",
+            "CSS"
+        ],
+        "location": {
+            "city": "Atlanta",
+            "zipCode": 12345
+        }
+    },
+    {
+        "firstName": "John",
+        "lastName": "Doe",
+        "age": 25,
+        "drivingLicense": false,
+        "skills": [
+            "HTML",
+            "CSS"
+        ],
+        "location": {
+            "city": "Atlanta",
+            "zipCode": 12345
+        }
+    }
+]
