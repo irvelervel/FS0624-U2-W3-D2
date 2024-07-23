@@ -40,7 +40,30 @@ localStorage.setItem('drivingLicense', true)
 // per questo motivo viene in nostro aiuto un metodo JS che converte CORRETTAMENTE
 // array e oggetti in formato stringa -> JSON.stringify()
 localStorage.setItem(
-  'complexData',
-  JSON.stringify(['Antonio', 'Diana', 'Giovanni'])
+  'arrayOfNames',
+  JSON.stringify(['Antonio', 'Diana', 'Giovanni', 'Loic'])
 )
+
 localStorage.setItem('object', JSON.stringify({ firstName: 'Stefano' }))
+// ma funziona anche
+// const yuri = { firstName: 'Yuri' }
+// localStorage.setItem('object', JSON.stringify(yuri))
+
+// per salvare nello session storage
+sessionStorage.setItem('test', 'ciao')
+
+// come recuperare i dati salvati?
+console.log(parseInt(localStorage.getItem('benchmarkResult')) + 100)
+
+// recupero di dati complessi dal local/session storage
+const arrayOfNames = JSON.parse(localStorage.getItem('arrayOfNames'))
+console.log('ARRAY ORIGINALE', arrayOfNames)
+
+const myName = JSON.parse(localStorage.getItem('object')).firstName
+console.log(myName) // 'Stefano'
+
+// eliminare una chiave specifica
+// localStorage.removeItem('benchmarkResult') // elimina benchmarkResult dal localStorage
+// localStorage.removeItem('arrayOfNames') // elimina arrayOfNames dal localStorage
+// localStorage.clear() // svuoterebbe tutto!
+localStorage.removeItem('complexData')
