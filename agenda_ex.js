@@ -27,9 +27,42 @@ const createListFromArray = function (array) {
     // ora lo riempio con i dati dell'elemento singolo della memoria
     newLi.innerText =
       array[i].firstName + ' ' + array[i].lastName + ' | ' + array[i].phone
+
+    // AGGIUNGO NEL <li> UN BOTTONE ELIMINA
+    const deleteButton = document.createElement('button')
+    deleteButton.classList.add('btn', 'btn-danger')
+    deleteButton.innerHTML = '<i class="bi bi-trash-fill"></i>'
+    deleteButton.addEventListener('click', function (e) {
+      console.log('CLICCATA LA X', e.target)
+      console.log(e.target.closest('li'))
+      console.log('i', i)
+
+      // sfrutto la i, ovvero l'indice del for in cui sono inserito
+      // per eliminare UN elemento dal mio array di contatti
+      array.splice(i, 1)
+      // salvo nel localStorage la versione aggiornata del mio array,
+      // in modo da mantenere sincronizzati DOM e localStorage
+      localStorage.setItem('rubrica', JSON.stringify(array))
+      // richiamo questa stessa funzione di generazione DOM,
+      // che rigenererà la lista con un array più corto e riposizionando
+      // correttamente tutti gli indici
+      createListFromArray(array)
+
+      // un binario morto è stato cercare di eliminare manualmente dal DOM
+      // il <li> associato al bottone cliccato, ma non siamo riusciti
+      // a manipolare l'array di conseguenza
+      // e.target.closest('li').remove()
+    })
+    newLi.appendChild(deleteButton)
+
     // Stefano Casasola | 123123
     // <li>Stefano Casasola | 123123</li>
-    newLi.classList.add('list-group-item')
+    newLi.classList.add(
+      'list-group-item',
+      'd-flex',
+      'align-items-center',
+      'justify-content-between'
+    )
     // <li class="list-group-item">Stefano Casasola | 123123</li>
     // ora, passo finale, appendo l'<li> appena creato e finito
     // nella lista non ordinata
@@ -86,6 +119,7 @@ document
     // prendo un riferimento alla <ul> iniziale vuota
 
     // LA FUNZIONE ERA QUA
+    // MANIP. DEL DOM
     createListFromArray(contactsList)
 
     // resetto il form
